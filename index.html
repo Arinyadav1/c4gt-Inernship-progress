@@ -5,31 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Progress Report · Mifos Save Mobile App</title>
-    <!-- Using Inter for highly readable, professional corporate typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* High Contrast Color Palette */
-            --bg-page: #F3F4F6;
-            --bg-doc: #FFFFFF;
-            --text-main: #111827;
-            /* Near black for maximum readability */
-            --text-secondary: #374151;
-            /* Dark gray for standard text */
-            --text-muted: #6B7280;
+            /* Dark Mode Color Palette */
+            --bg-page: #111827;
+            /* Darkest gray for page background */
+            --bg-doc: #1F2937;
+            /* Slightly lighter for the document */
+            --text-main: #F9FAFB;
+            /* Near white for headings */
+            --text-secondary: #D1D5DB;
+            /* Light gray for standard text */
+            --text-muted: #9CA3AF;
             /* Medium gray for meta info */
-            --accent-primary: #4F46E5;
-            /* Professional Indigo */
-            --accent-hover: #4338CA;
-            --border-color: #E5E7EB;
+            --accent-primary: #818CF8;
+            /* Lighter indigo for contrast */
+            --accent-hover: #A5B4FC;
+            --border-color: #374151;
+            /* Dark gray borders */
 
-            /* Status Colors (Accessible Contrast) */
-            --status-success-text: #065F46;
-            --status-success-bg: #D1FAE5;
-            --status-warn-text: #92400E;
-            --status-warn-bg: #FEF3C7;
+            /* Status Colors (Accessible Contrast for Dark Mode) */
+            --status-success-text: #6EE7B7;
+            --status-success-bg: rgba(6, 95, 70, 0.4);
+            --status-warn-text: #FDE047;
+            --status-warn-bg: rgba(146, 64, 14, 0.4);
         }
 
         * {
@@ -58,8 +60,8 @@
             background-color: var(--bg-doc);
             padding: 3rem 4rem;
             border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            border: 1px solid #D1D5DB;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
         }
 
         /* Top Navigation Menu */
@@ -82,7 +84,7 @@
         }
 
         .doc-nav a:hover {
-            color: var(--accent-primary);
+            color: var(--accent-hover);
         }
 
         /* Headers */
@@ -146,7 +148,7 @@
         /* Blockquote */
         blockquote {
             border-left: 4px solid var(--accent-primary);
-            background-color: #F9FAFB;
+            background-color: rgba(255, 255, 255, 0.03);
             padding: 1.25rem 1.5rem;
             margin: 1.5rem 0;
             font-style: italic;
@@ -177,10 +179,10 @@
         }
 
         th {
-            background-color: #F9FAFB;
+            background-color: rgba(255, 255, 255, 0.05);
             color: var(--text-main);
             font-weight: 600;
-            border-bottom: 2px solid #D1D5DB;
+            border-bottom: 2px solid #4B5563;
         }
 
         tr:last-child td {
@@ -188,7 +190,7 @@
         }
 
         tr:nth-child(even) {
-            background-color: #FDFDFD;
+            background-color: rgba(255, 255, 255, 0.02);
         }
 
         /* Status Tags */
@@ -204,13 +206,13 @@
         .status-done {
             background-color: var(--status-success-bg);
             color: var(--status-success-text);
-            border: 1px solid #A7F3D0;
+            border: 1px solid rgba(110, 231, 183, 0.3);
         }
 
         .status-wip {
             background-color: var(--status-warn-bg);
             color: var(--status-warn-text);
-            border: 1px solid #FDE68A;
+            border: 1px solid rgba(253, 224, 71, 0.3);
         }
 
         /* Images */
@@ -219,7 +221,7 @@
             padding: 1rem;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            background-color: #F9FAFB;
+            background-color: rgba(255, 255, 255, 0.02);
             text-align: center;
         }
 
@@ -240,7 +242,7 @@
             border: 1px solid var(--border-color);
             border-radius: 6px;
             margin-bottom: 1rem;
-            background-color: #FFFFFF;
+            background-color: var(--bg-doc);
         }
 
         summary {
@@ -250,7 +252,7 @@
             cursor: pointer;
             list-style: none;
             position: relative;
-            background-color: #F9FAFB;
+            background-color: rgba(255, 255, 255, 0.05);
             border-radius: 6px;
         }
 
@@ -300,7 +302,7 @@
         }
 
         a:hover {
-            text-decoration-color: var(--accent-primary);
+            text-decoration-color: var(--accent-hover);
         }
 
         .back-to-top {
@@ -343,334 +345,332 @@
 
 <body>
 
-    <main class="document-container" id="top">
+<main class="document-container" id="top">
 
-        <!-- Document Navigation -->
-        <nav class="doc-nav">
-            <a href="#about">About Project</a>
-            <a href="#tech">Tech Stack</a>
-            <a href="#goals">Milestones</a>
-            <a href="#progress">Weekly Progress</a>
-            <a href="#learnings">Key Learnings</a>
-        </nav>
+    <nav class="doc-nav">
+        <a href="#about">About Project</a>
+        <a href="#tech">Tech Stack</a>
+        <a href="#goals">Milestones</a>
+        <a href="#progress">Weekly Progress</a>
+        <a href="#learnings">Key Learnings</a>
+    </nav>
 
-        <!-- Header Section -->
-        <header>
-            <h1>Mifos Save Mobile App</h1>
-            <p class="subtitle">C4GT Internship Progress Report · 2026</p>
+    <header>
+        <h1>Mifos Save Mobile App</h1>
+        <p class="subtitle">C4GT Internship Progress Report · 2026</p>
 
-            <div class="badges-wrapper">
-                <img src="https://img.shields.io/badge/Internship-Mifos%20Initiative-7C3AED?style=flat-square&logo=openjdk&logoColor=white"
-                    alt="Mifos Initiative" />
-                <img src="https://img.shields.io/badge/Duration-12%20Weeks-059669?style=flat-square&logo=clockify&logoColor=white"
-                    alt="12 Weeks" />
-                <img src="https://img.shields.io/badge/Status-In%20Progress-F59E0B?style=flat-square&logo=statuspage&logoColor=white"
-                    alt="In Progress" />
-                <img src="https://img.shields.io/badge/PRs%20Merged-0+-6366F1?style=flat-square&logo=git&logoColor=white"
-                    alt="0+ PRs" />
+        <div class="badges-wrapper">
+            <img src="https://img.shields.io/badge/Internship-Mifos%20Initiative-7C3AED?style=flat-square&logo=openjdk&logoColor=white"
+                 alt="Mifos Initiative" />
+            <img src="https://img.shields.io/badge/Duration-12%20Weeks-059669?style=flat-square&logo=clockify&logoColor=white"
+                 alt="12 Weeks" />
+            <img src="https://img.shields.io/badge/Status-In%20Progress-F59E0B?style=flat-square&logo=statuspage&logoColor=white"
+                 alt="In Progress" />
+            <img src="https://img.shields.io/badge/PRs%20Merged-0+-6366F1?style=flat-square&logo=git&logoColor=white"
+                 alt="0+ PRs" />
+        </div>
+        <div class="badges-wrapper" style="margin-bottom: 1rem;">
+            <img src="https://img.shields.io/badge/Kotlin%20Multiplatform-7F52FF?style=flat-square&logo=kotlin&logoColor=white"
+                 alt="KMP" />
+            <img src="https://img.shields.io/badge/Compose%20Multiplatform-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white"
+                 alt="Compose" />
+            <img src="https://img.shields.io/badge/Android%20%7C%20iOS%20%7C%20Desktop%20%7C%20Web-3DDC84?style=flat-square&logo=android&logoColor=white"
+                 alt="Platforms" />
+        </div>
+
+        <div class="badges-wrapper" style="gap: 1rem; margin-top: 1.5rem;">
+            <a href="https://github.com/arinyadav1/" target="_blank">
+                <img alt="GitHub"
+                     src="https://img.shields.io/static/v1?style=flat-square&label=&message=GITHUB&color=24292e&logo=github&logoColor=white">
+            </a>
+            <a href="#" target="_blank">
+                <img alt="Jira"
+                     src="https://img.shields.io/static/v1?style=flat-square&label=&message=JIRA&color=0052CC&logo=jira&logoColor=white">
+            </a>
+            <a href="https://www.linkedin.com/in/arinyadav1/" target="_blank">
+                <img alt="LinkedIn"
+                     src="https://img.shields.io/static/v1?style=flat-square&label=&message=LINKEDIN&color=0A66C2&logo=linkedin&logoColor=white">
+            </a>
+        </div>
+    </header>
+
+    <section id="about">
+        <h2>
+            📌 About the Project
+            <a href="#top" class="back-to-top">↑ Top</a>
+        </h2>
+        <blockquote>
+            "Banking for Every Community — Open, Inclusive, and Digital."
+        </blockquote>
+        <p>
+            The <strong>Mifos Save Mobile Application</strong> is an open-source digital banking app that helps
+            financial institutions manage group-based financial services. This project adds support for Group
+            Banking and Village Savings and Loan Associations (VSLA), enabling field officers to manage Centers,
+            Groups, members, savings, loans, attendance, meetings, and collection activities. It also introduces
+            JLG, GLIM, GSIM, and VSLA features to streamline community banking operations and improve financial
+            inclusion.
+        </p>
+        <p>
+            <strong>The Mission:</strong> To strengthen financial inclusion by digitizing community banking and
+            group financial services.
+        </p>
+    </section>
+
+    <section id="tech">
+        <h2>
+            🛠️ Tech Stack
+            <a href="#top" class="back-to-top">↑ Top</a>
+        </h2>
+        <p>The Mifos Save Mobile Application is built using modern cross-platform technologies that prioritize
+            scalability, maintainability, performance, and developer productivity.</p>
+
+        <div class="table-responsive">
+            <table>
+                <thead>
+                <tr>
+                    <th style="width: 20%;">Category</th>
+                    <th style="width: 25%;">Technology</th>
+                    <th style="width: 55%;">Purpose</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><strong>Language</strong></td>
+                    <td>Kotlin (Multiplatform)</td>
+                    <td>Share business logic across Android, iOS, Desktop, and Web.</td>
+                </tr>
+                <tr>
+                    <td><strong>UI Framework</strong></td>
+                    <td>Compose Multiplatform</td>
+                    <td>Build modern, declarative, and responsive user interfaces.</td>
+                </tr>
+                <tr>
+                    <td><strong>Architecture</strong></td>
+                    <td>MVI (Model-View-Intent)</td>
+                    <td>Ensure predictable state management and unidirectional data flow.</td>
+                </tr>
+                <tr>
+                    <td><strong>Networking</strong></td>
+                    <td>Ktor + Ktorfit</td>
+                    <td>Perform type-safe API communication with backend services.</td>
+                </tr>
+                <tr>
+                    <td><strong>Asynchronous Handling</strong></td>
+                    <td>Coroutines + Flows</td>
+                    <td>Enable asynchronous operations and reactive state updates.</td>
+                </tr>
+                <tr>
+                    <td><strong>Database</strong></td>
+                    <td>Room and Store5</td>
+                    <td>Local database storage, caching, and offline support.</td>
+                </tr>
+                <tr>
+                    <td><strong>Dependency Injection</strong></td>
+                    <td>Koin</td>
+                    <td>Manage dependencies in a lightweight, testable manner.</td>
+                </tr>
+                <tr>
+                    <td><strong>CI/CD</strong></td>
+                    <td>GitHub Actions</td>
+                    <td>Automate builds, track issues, and support sprint planning.</td>
+                </tr>
+                <tr>
+                    <td><strong>Design System</strong></td>
+                    <td>Material 3 + Custom Mifos Design System</td>
+                    <td>Deliver a consistent, accessible, and modern user experience across the application.
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Image Loading</strong></td>
+                    <td>Coil</td>
+                    <td>Provide fast, memory-efficient image loading and caching.</td>
+                </tr>
+                <tr>
+                    <td><strong>Serialization</strong></td>
+                    <td>Kotlinx Serialization</td>
+                    <td>Handle JSON parsing, data transformation, and API model serialization.</td>
+                </tr>
+                <tr>
+                    <td><strong>Project Management</strong></td>
+                    <td>Jira + GitHub Projects</td>
+                    <td>Support sprint planning, issue tracking, project monitoring, and team collaboration.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>Architecture Diagram (MVI Flow)</h3>
+        <div class="image-box">
+            <img src="https://github.com/user-attachments/assets/35718008-7972-4291-90fc-af72b580d472"
+                 alt="MVI Flow Architecture Diagram" />
+            <div class="image-caption">Figure 1: Standard Model-View-Intent flow utilized in the application.</div>
+        </div>
+    </section>
+
+    <section id="goals">
+        <h2>
+            🎯 Goals & Milestones
+            <a href="#top" class="back-to-top">↑ Top</a>
+        </h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                <tr>
+                    <th style="width: 5%; text-align: center;">Sr. No.</th>
+                    <th style="width: 25%;">Goal</th>
+                    <th style="width: 55%;">Description</th>
+                    <th style="width: 15%;">Status</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="text-align: center;">1</td>
+                    <td><strong>Domain Understanding (Group Banking & VSLA)</strong></td>
+                    <td>Study core concepts including Group Banking, VSLA, JLG, GLIM, and GSIM to understand
+                        end-to-end financial workflows</td>
+                    <td><span class="status status-done">✅ Completed</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">2</td>
+                    <td><strong>KMP Codebase Analysis</strong></td>
+                    <td>Explore project template, architecture, boundaries, and existing patterns.</td>
+                    <td><span class="status status-done">✅ Completed</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">3</td>
+                    <td><strong>System & Product Design</strong></td>
+                    <td>Translate workflows into a digital product by defining user journeys.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">4</td>
+                    <td><strong>Center Management</strong></td>
+                    <td>Implement center lifecycle, activation, and attendance tracking.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">5</td>
+                    <td><strong>Group Management</strong></td>
+                    <td>Build group lifecycle management, onboarding, and meetings.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">6</td>
+                    <td><strong>VSLA Implementation</strong></td>
+                    <td>Implement savings cycles, share purchases, and distribution logic.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">7</td>
+                    <td><strong>GLIM (Group Loans with Individual Monitoring)</strong></td>
+                    <td>Enable group loan creation with per-member tracking and schedules.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">8</td>
+                    <td><strong>GSIM (Group Savings with Individual Monitoring)</strong></td>
+                    <td>Support group savings with individual contributions and balances.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">9</td>
+                    <td><strong>Collection Sheet System</strong></td>
+                    <td>Build meeting-based collection sheets for loans, savings, and attendance.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">9</td>
+                    <td><strong>Bulk Operations Engine</strong></td>
+                    <td>Enable bulk repayments, deposits, withdrawals, attendance updates, and synchronized
+                        batch processing</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">9</td>
+                    <td><strong>Offline-First Implementation</strong></td>
+                    <td>Ensure full functionality in offline mode with local persistence, sync queue, and
+                        conflict resolution strategy.</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;">10</td>
+                    <td><strong>Integration with KMP Architecture</strong></td>
+                    <td>Seamlessly integrate all modules into existing KMP layers (UI, domain, data, networking,
+                        DI).</td>
+                    <td><span class="status status-wip">🔄 In Progress</span></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="progress">
+        <h2>
+            📅 Detailed Weekly Progress
+            <a href="#top" class="back-to-top">↑ Top</a>
+        </h2>
+
+        <details open>
+            <summary>Week 1 · 10th - 13th June 2026</summary>
+            <div class="details-content">
+                <h4 style="margin-top: 0;">Key Activities & Deliverables</h4>
+                <ul>
+                    <li>Explored and understood the KMP Project Template used for the Mifos Save application.</li>
+                    <li>Analyzed the project structure, architecture, and module organization.</li>
+                    <li>Understood the implementation of core layers (UI, ViewModel, Repository, Network, Database).
+                    </li>
+                    <li>Studied the Group Banking business workflow and key functional concepts.</li>
+                    <li>Identified the API integrations required for Group Banking.</li>
+                    <li>Conceptualized how Group Banking features map into a digital interface.</li>
+                </ul>
+                <h4>Pull Requests</h4>
+                <p><em>No PRs were created during this initial research and planning period.</em></p>
             </div>
-            <div class="badges-wrapper" style="margin-bottom: 1rem;">
-                <img src="https://img.shields.io/badge/Kotlin%20Multiplatform-7F52FF?style=flat-square&logo=kotlin&logoColor=white"
-                    alt="KMP" />
-                <img src="https://img.shields.io/badge/Compose%20Multiplatform-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white"
-                    alt="Compose" />
-                <img src="https://img.shields.io/badge/Android%20%7C%20iOS%20%7C%20Desktop%20%7C%20Web-3DDC84?style=flat-square&logo=android&logoColor=white"
-                    alt="Platforms" />
+        </details>
+
+        <details>
+            <summary>Week 2 · Upcoming</summary>
+            <div class="details-content">
+                <p><em>Tasks and technical goals for this week will be documented here once completed.</em></p>
             </div>
+        </details>
 
-            <div class="badges-wrapper" style="gap: 1rem; margin-top: 1.5rem;">
-                <a href="https://github.com/arinyadav1/" target="_blank">
-                    <img alt="GitHub"
-                        src="https://img.shields.io/static/v1?style=flat-square&label=&message=GITHUB&color=24292e&logo=github&logoColor=white">
-                </a>
-                <a href="#" target="_blank">
-                    <img alt="Jira"
-                        src="https://img.shields.io/static/v1?style=flat-square&label=&message=JIRA&color=0052CC&logo=jira&logoColor=white">
-                </a>
-                <a href="https://www.linkedin.com/in/arinyadav1/" target="_blank">
-                    <img alt="LinkedIn"
-                        src="https://img.shields.io/static/v1?style=flat-square&label=&message=LINKEDIN&color=0A66C2&logo=linkedin&logoColor=white">
-                </a>
-            </div>
-        </header>
+    </section>
 
-        <!-- About Section -->
-        <section id="about">
-            <h2>
-                📌 About the Project
-                <a href="#top" class="back-to-top">↑ Top</a>
-            </h2>
-            <blockquote>
-                "Banking for Every Community — Open, Inclusive, and Digital."
-            </blockquote>
-            <p>
-                The <strong>Mifos Save Mobile Application</strong> is an open-source digital banking app that helps
-                financial institutions manage group-based financial services. This project adds support for Group
-                Banking and Village Savings and Loan Associations (VSLA), enabling field officers to manage Centers,
-                Groups, members, savings, loans, attendance, meetings, and collection activities. It also introduces
-                JLG, GLIM, GSIM, and VSLA features to streamline community banking operations and improve financial
-                inclusion.
-            </p>
-            <p>
-                <strong>The Mission:</strong> To strengthen financial inclusion by digitizing community banking and
-                group financial services.
-            </p>
-        </section>
+    <section id="learnings">
+        <h2>
+            📖 Key Learnings
+            <a href="#top" class="back-to-top">↑ Top</a>
+        </h2>
+        <div class="table-responsive">
+            <table>
+                <thead>
+                <tr>
+                    <th style="width: 20%;">Domain / Area</th>
+                    <th style="width: 80%;">Learning Outcome</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td style="color: var(--text-muted);"><em>Pending Update</em></td>
+                    <td style="color: var(--text-muted); font-style: italic;">Detailed technical and
+                        architectural learnings will be populated here as milestones are completed.</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
 
-        <!-- Tech Stack Section -->
-        <section id="tech">
-            <h2>
-                🛠️ Tech Stack
-                <a href="#top" class="back-to-top">↑ Top</a>
-            </h2>
-            <p>The Mifos Save Mobile Application is built using modern cross-platform technologies that prioritize
-                scalability, maintainability, performance, and developer productivity.</p>
+    <footer class="footer">
+        <p>Made with ❤️ during the <strong>Mifos Initiative Internship 2026</strong></p>
+        <p>
+            <a href="https://github.com/arinyadav1/">@arinyadav1</a> |
+            <a href="https://mifos.org">Mifos Initiative</a>
+        </p>
+    </footer>
 
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 20%;">Category</th>
-                            <th style="width: 25%;">Technology</th>
-                            <th style="width: 55%;">Purpose</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Language</strong></td>
-                            <td>Kotlin (Multiplatform)</td>
-                            <td>Share business logic across Android, iOS, Desktop, and Web.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>UI Framework</strong></td>
-                            <td>Compose Multiplatform</td>
-                            <td>Build modern, declarative, and responsive user interfaces.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Architecture</strong></td>
-                            <td>MVI (Model-View-Intent)</td>
-                            <td>Ensure predictable state management and unidirectional data flow.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Networking</strong></td>
-                            <td>Ktor + Ktorfit</td>
-                            <td>Perform type-safe API communication with backend services.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Asynchronous Handling</strong></td>
-                            <td>Coroutines + Flows</td>
-                            <td>Enable asynchronous operations and reactive state updates.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Database</strong></td>
-                            <td>Room and Store5</td>
-                            <td>Local database storage, caching, and offline support.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Dependency Injection</strong></td>
-                            <td>Koin</td>
-                            <td>Manage dependencies in a lightweight, testable manner.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>CI/CD</strong></td>
-                            <td>GitHub Actions</td>
-                            <td>Automate builds, track issues, and support sprint planning.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Design System</strong></td>
-                            <td>Material 3 + Custom Mifos Design System</td>
-                            <td>Deliver a consistent, accessible, and modern user experience across the application.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Image Loading</strong></td>
-                            <td>Coil</td>
-                            <td>Provide fast, memory-efficient image loading and caching.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Serialization</strong></td>
-                            <td>Kotlinx Serialization</td>
-                            <td>Handle JSON parsing, data transformation, and API model serialization.</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Project Management</strong></td>
-                            <td>Jira + GitHub Projects</td>
-                            <td>Support sprint planning, issue tracking, project monitoring, and team collaboration.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Architecture Diagram (MVI Flow)</h3>
-            <div class="image-box">
-                <img src="https://github.com/user-attachments/assets/35718008-7972-4291-90fc-af72b580d472"
-                    alt="MVI Flow Architecture Diagram" />
-                <div class="image-caption">Figure 1: Standard Model-View-Intent flow utilized in the application.</div>
-            </div>
-        </section>
-
-        <!-- Goals Section -->
-        <section id="goals">
-            <h2>
-                🎯 Goals & Milestones
-                <a href="#top" class="back-to-top">↑ Top</a>
-            </h2>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 5%; text-align: center;">Sr. No.</th>
-                            <th style="width: 25%;">Goal</th>
-                            <th style="width: 55%;">Description</th>
-                            <th style="width: 15%;">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="text-align: center;">1</td>
-                            <td><strong>Domain Understanding (Group Banking & VSLA)</strong></td>
-                            <td>Study core concepts including Group Banking, VSLA, JLG, GLIM, and GSIM to understand end-to-end financial workflows</td>
-                            <td><span class="status status-done">✅ Completed</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">2</td>
-                            <td><strong>KMP Codebase Analysis</strong></td>
-                            <td>Explore project template, architecture, boundaries, and existing patterns.</td>
-                            <td><span class="status status-done">✅ Completed</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">3</td>
-                            <td><strong>System & Product Design</strong></td>
-                            <td>Translate workflows into a digital product by defining user journeys.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">4</td>
-                            <td><strong>Center Management</strong></td>
-                            <td>Implement center lifecycle, activation, and attendance tracking.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">5</td>
-                            <td><strong>Group Management</strong></td>
-                            <td>Build group lifecycle management, onboarding, and meetings.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">6</td>
-                            <td><strong>VSLA Implementation</strong></td>
-                            <td>Implement savings cycles, share purchases, and distribution logic.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">7</td>
-                            <td><strong>GLIM (Group Loans with Individual Monitoring)</strong></td>
-                            <td>Enable group loan creation with per-member tracking and schedules.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">8</td>
-                            <td><strong>GSIM (Group Savings with Individual Monitoring)</strong></td>
-                            <td>Support group savings with individual contributions and balances.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">9</td>
-                            <td><strong>Collection Sheet System</strong></td>
-                            <td>Build meeting-based collection sheets for loans, savings, and attendance.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">9</td>
-                            <td><strong>Bulk Operations Engine</strong></td>
-                            <td>Enable bulk repayments, deposits, withdrawals, attendance updates, and synchronized batch processing</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">9</td>
-                            <td><strong>Offline-First Implementation</strong></td>
-                            <td>Ensure full functionality in offline mode with local persistence, sync queue, and conflict resolution strategy.</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                        <tr>
-                            <td style="text-align: center;">10</td>
-                            <td><strong>Integration with KMP Architecture</strong></td>
-                            <td>Seamlessly integrate all modules into existing KMP layers (UI, domain, data, networking, DI).</td>
-                            <td><span class="status status-wip">🔄 In Progress</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Weekly Progress Section -->
-        <section id="progress">
-            <h2>
-                📅 Detailed Weekly Progress
-                <a href="#top" class="back-to-top">↑ Top</a>
-            </h2>
-
-            <details open>
-                <summary>Week 1 · 10th - 13th June 2026</summary>
-                <div class="details-content">
-                    <h4 style="margin-top: 0;">Key Activities & Deliverables</h4>
-                    <ul>
-                        <li>Explored and understood the KMP Project Template used for the Mifos Save application.</li>
-                        <li>Analyzed the project structure, architecture, and module organization.</li>
-                        <li>Understood the implementation of core layers (UI, ViewModel, Repository, Network, Database).
-                        </li>
-                        <li>Studied the Group Banking business workflow and key functional concepts.</li>
-                        <li>Identified the API integrations required for Group Banking.</li>
-                        <li>Conceptualized how Group Banking features map into a digital interface.</li>
-                    </ul>
-                    <h4>Pull Requests</h4>
-                    <p><em>No PRs were created during this initial research and planning period.</em></p>
-                </div>
-            </details>
-
-            <details>
-                <summary>Week 2 · Upcoming</summary>
-                <div class="details-content">
-                    <p><em>Tasks and technical goals for this week will be documented here once completed.</em></p>
-                </div>
-            </details>
-            
-        </section>
-
-        <!-- Key Learnings Section -->
-        <section id="learnings">
-            <h2>
-                📖 Key Learnings
-                <a href="#top" class="back-to-top">↑ Top</a>
-            </h2>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th style="width: 20%;">Domain / Area</th>
-                            <th style="width: 80%;">Learning Outcome</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="color: var(--text-muted);"><em>Pending Update</em></td>
-                            <td style="color: var(--text-muted); font-style: italic;">Detailed technical and
-                                architectural learnings will be populated here as milestones are completed.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>Made with ❤️ during the <strong>Mifos Initiative Internship 2026</strong></p>
-            <p>
-                <a href="https://github.com/arinyadav1/">@arinyadav1</a> |
-                <a href="https://mifos.org">Mifos Initiative</a>
-            </p>
-        </footer>
-
-    </main>
+</main>
 
 </body>
 
